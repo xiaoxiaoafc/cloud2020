@@ -1,13 +1,17 @@
 package com.sve.springcloud;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @auther zzyy
  * @create 2020-02-17 21:13
  */
 @SpringBootApplication
+@EnableEurekaClient
 public class PaymentMain8001
 {
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
 package com.sve.springcloud.controller;
 
-import com.sve.springcloud.entities.CommonResult;
-import com.sve.springcloud.entities.Payment;
+import com.sve.springcloud.entitys.CommonResult;
+import com.sve.springcloud.entitys.Payment;
 import com.sve.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
