@@ -2,6 +2,7 @@ package com.sve.springcloud.controller;
 
 import com.sve.springcloud.entitys.CommonResult;
 import com.sve.springcloud.entitys.Payment;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -18,7 +19,7 @@ import java.util.List;
 public class OrderController {
 
     private static  final  String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE/";
-    //private static  final  String PAYMENT_URL = "http://localhost:8001/";
+    // private static  final  String PAYMENT_URL = "http://192.168.10.151:8001/";
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
@@ -32,7 +33,11 @@ public class OrderController {
     @GetMapping(value = "comsumer/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id)
     {
-        ResponseEntity<CommonResult> responseEntity =  restTemplate.getForEntity(PAYMENT_URL + "payment/get/"+ id,CommonResult.class);
+        List<String> services =  discoveryClient.getServices();
+
+         System.out.println(services);
+
+          ResponseEntity<CommonResult> responseEntity =  restTemplate.getForEntity(PAYMENT_URL + "payment/get/"+ id,CommonResult.class);
         return  restTemplate.getForObject(PAYMENT_URL + "payment/get/"+ id,CommonResult.class);
     }
 }
